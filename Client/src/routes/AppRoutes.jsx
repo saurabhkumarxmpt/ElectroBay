@@ -8,6 +8,7 @@ const AppRoutes=()=>{
         <>
       <Routes>
         {ClientRoutes()}
+        {AdminRoutes()}
       </Routes>
       </>
   );
