@@ -1,13 +1,31 @@
 const Category = require('../models/category');
-
-
+const cloudinary=require('../utils/cloudinary');
+const fs=require('fs');
 //Add a new Category
 exports.newCategory=async(req,res)=>{
     try{
-        const categorydata=req.body;
-        const newCategory=new Category(categorydata);
-        await newCategory.save();
-        res.json({message:'category saved'});
+        const{name,description}=req.body;
+         if(!req.file){
+            return res.status(400).json({message:"image file is required"});
+         }
+
+         const result=await cloudinary.uploader.upload(req.file.path,{
+            folder:'category',
+            public_id: name.toLowerCase().replace(/\s+/g, '-'),
+            overwrite:true
+         });
+
+          fs.unlinkSync(req.file.path);
+
+          const newCategory=new Category({
+            name,
+            description,
+            image:result.secure_url,
+          });
+
+          await newCategory.save();
+
+
     }catch(err){
         res.status(500).json({message:err.message});
     }

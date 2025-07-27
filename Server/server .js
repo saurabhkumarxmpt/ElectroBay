@@ -3,6 +3,7 @@ const express=require('express');
 const cors=require('cors');
 const database=require('./config/database');
 const category=require('./routes/categoryRoutes');
+const uplaodRoutes=require('./routes/uploadRoutes');
 const PORT=process.env.PORT;
 const app=express();
 
@@ -12,7 +13,7 @@ database(); // include database
 
 
 app.use('/api/categories',category); // add category route
-
+app.use('/api',uplaodRoutes);
 
 //demo route
 app.get('/',(req,res)=>{
