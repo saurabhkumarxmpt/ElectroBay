@@ -25,6 +25,11 @@ exports.newCategory=async(req,res)=>{
 
           await newCategory.save();
 
+          res.json({
+            message: 'Category saved successfully!',
+            category: newCategory,
+          })
+
 
     }catch(err){
         res.status(500).json({message:err.message});
