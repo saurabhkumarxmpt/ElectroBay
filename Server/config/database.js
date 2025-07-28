@@ -1,8 +1,10 @@
+//import the express
 const mongoose=require('mongoose');
 
+//Connect The MongoDB Database
 const connectDB=async()=>{
     try{
-        await mongoose.connect(process.env.MONGO_URI); //include the mongodb database url
+        await mongoose.connect(process.env.MONGO_URI);
         console.info("database connect"); // sucess message
     }catch(error){
         console.error(error); //error message;
@@ -10,4 +12,4 @@ const connectDB=async()=>{
 
 }
 
-module.exports=connectDB;
+module.exports=connectDB; //export the database

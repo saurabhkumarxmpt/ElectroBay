@@ -1,9 +1,13 @@
-const Category = require('../models/category');
-const cloudinary=require('../utils/cloudinary');
+//import the importent packages
 const fs=require('fs');
 
+//Import the importent modules
+const Category = require('../models/category'); //Category Schema
+const cloudinary=require('../utils/cloudinary'); //Cloudinary module for saving images
 
-//Add a new Category
+
+
+//Add A new category with an image and name and description
 exports.newCategory=async(req,res)=>{
     try{
         const{name,description}=req.body;
@@ -38,11 +42,11 @@ exports.newCategory=async(req,res)=>{
     }
 }   
 
-//all cetegory
-exports.Allcategorys=async(req,res)=>{
+//Fetch All categories  from the database
+exports.Allcategories=async(req,res)=>{
   try{
-    const cetegorys=await Category.find();
-    res.json(cetegorys);
+    const categories=await Category.find();
+    res.json(categories);
     
   }catch(err){
     res.status(500).json({message:err.message});
@@ -50,7 +54,7 @@ exports.Allcategorys=async(req,res)=>{
 }
 
 
-//delete a category
+//Delete a Category with using the (Id) 
 exports.deleteCategory=async(req,res)=>{
   try{
     const categoryId=req.params.id;

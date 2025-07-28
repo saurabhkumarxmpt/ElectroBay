@@ -19,11 +19,11 @@ const productSchema = new mongoose.Schema({
   },
   discount: {
     type: Number,
-    default: 0, // in percentage
+    default: 0,
   },
   finalPrice: {
     type: Number,
-    default: 0, // will be calculated before save
+    default: 0,
   },
   description: {
     type: String,
@@ -31,7 +31,7 @@ const productSchema = new mongoose.Schema({
     text: true,
   },
   images: {
-    type: [String], // Cloudinary URLs
+    type: [String], 
     required: true,
   },
   stock: {
@@ -45,7 +45,7 @@ const productSchema = new mongoose.Schema({
     required: true
   },
   tags: {
-    type: [String], // useful for filtering (e.g. ["summer", "sale", "cotton"])
+    type: [String],
     index: true,
   },
   isFeatured: {

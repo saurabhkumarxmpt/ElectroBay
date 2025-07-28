@@ -1,9 +1,13 @@
-const Product=require("../models/productModel");
-const cloudinary=require('../utils/cloudinary');
+//Import required packages 
 const fs=require('fs');
 const path = require('path');
 
+//Import required modules
+const Product=require("../models/productModel"); //product schema
+const cloudinary=require('../utils/cloudinary'); //Save Images
 
+
+//In this module, you can create a new product, upload multiple images for it, and assign a category to the product. Additionally, I have created multiple input fields (or sections/boxes) to capture all the necessary details of the product.
 exports.createProduct=async(req,res)=>{
     try{
 

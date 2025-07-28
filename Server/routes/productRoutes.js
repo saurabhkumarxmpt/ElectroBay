@@ -3,6 +3,6 @@ const router=express.Router();
 const upload=require('../utils/multer');
 const{createProduct}=require('../controllers/productController');
 
-router.post('/', upload.array('images',5),createProduct);
+router.post('/', upload.array('images',5),createProduct); //create the new product
 
 module.exports=router;
