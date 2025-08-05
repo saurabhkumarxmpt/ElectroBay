@@ -55,9 +55,19 @@ exports.createProduct=async(req,res)=>{
 
         await product.save();
 
-        res.status(201).json({message:"producted created sucess", product});
+        res.status(201).json({message:"The Product saved succesfully", product});
 
     }catch(err){
         res.status(500).json({message:"something went wrong", error:err.message});
+    }
+}
+
+//Fetach All products 
+exports.fetchAllProducts=async(req,res)=>{
+    try{
+        const AllProducts=await Product.find();
+        res.json(AllProducts);
+    }catch(err){
+        res.status(500).json({message:"something went wrong",error:err.message})
     }
 }
